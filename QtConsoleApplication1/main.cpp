@@ -1,8 +1,8 @@
-#include <QtCore/QCoreApplication>
+#include <QtCore>
+#include <iostream>
 
-int main(int argc, char *argv[])
-{
-	QCoreApplication a(argc, argv);
+int main() {
 
-	return a.exec();
+	std::cout << "Qt version: " << qVersion() << std::endl;
+	getchar();
 }
