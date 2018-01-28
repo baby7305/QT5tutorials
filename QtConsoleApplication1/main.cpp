@@ -1,8 +1,20 @@
-#include <QtCore>
-#include <iostream>
+#include <QTextStream>
 
-int main() {
+int main(void) {
 
-	std::cout << "Qt version: " << qVersion() << std::endl;
+	QTextStream out(stdout);
+
+	QString a = "love";
+
+	a.append(" chess");
+	a.prepend("I ");
+
+	out << a << endl;
+	out << "The a string has " << a.count()
+		<< " characters" << endl;
+
+	out << a.toUpper() << endl;
+	out << a.toLower() << endl;
 	getchar();
+	return 0;
 }
