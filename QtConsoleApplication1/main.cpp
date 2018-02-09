@@ -1,38 +1,36 @@
-#include <QSet>
-#include <QList>
 #include <QTextStream>
-#include <algorithm>
+#include <QMap>
 
 int main(void) {
 
 	QTextStream out(stdout);
 
-	QSet<QString> cols1 = { "yellow", "red", "blue" };
-	QSet<QString> cols2 = { "blue", "pink", "orange" };
+	QMap<QString, int> items = { { "coins", 5 },{ "books", 3 } };
 
-	out << "There are " << cols1.size() << " values in the set" << endl;
+	items.insert("bottles", 7);
 
-	cols1.insert("brown");
+	QList<int> values = items.values();
 
-	out << "There are " << cols1.size() << " values in the set" << endl;
+	out << "Values:" << endl;
 
-	cols1.unite(cols2);
-
-	out << "There are " << cols1.size() << " values in the set" << endl;
-
-	for (QString val : cols1) {
+	for (int val : values) {
 		out << val << endl;
 	}
 
-	QList<QString> lcols = cols1.values();
-	std::sort(lcols.begin(), lcols.end());
+	QList<QString> keys = items.keys();
 
-	out << "*********************" << endl;
-	out << "Sorted:" << endl;
+	out << "Keys:" << endl;
+	for (QString key : keys) {
+		out << key << endl;
+	}
 
-	for (QString val : lcols) {
-		out << val << endl;
+	QMapIterator<QString, int> it(items);
+
+	out << "Pairs:" << endl;
+
+	while (it.hasNext()) {
+		it.next();
+		out << it.key() << ": " << it.value() << endl;
 	}
 	getchar();
-	return 0;
 }
