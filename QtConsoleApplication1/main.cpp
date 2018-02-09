@@ -4,16 +4,15 @@ int main(void) {
 
 	QTextStream out(stdout);
 
-	QString a = "Eagle";
+	QString s1 = "Eagle";
+	QString s2 = "Eagle\n";
+	QString s3 = "Eagle ";
+	QString s4 = "§à§â§Ö§Ý";
 
-	out << a[0] << endl;
-	out << a[4] << endl;
-
-	out << a.at(0) << endl;
-	getchar();
-	if (a.at(5).isNull()) {
-		out << "Outside the range of the string" << endl;
-	}
+	out << s1.length() << endl;
+	out << s2.length() << endl;
+	out << s3.length() << endl;
+	out << s4.length() << endl;
 	getchar();
 	return 0;
 }
