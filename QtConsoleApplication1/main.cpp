@@ -1,8 +1,27 @@
-#include <QtCore>
-#include <iostream>
+#include <QVector>
+#include <QTextStream>
 
-int main() {
+int main(void) {
 
-	std::cout << "Qt version: " << qVersion() << std::endl;
+	QTextStream out(stdout);
+
+	QVector<int> vals = { 1, 2, 3, 4, 5 };
+
+	out << "The size of the vector is: " << vals.size() << endl;
+
+	out << "The first item is: " << vals.first() << endl;
+	out << "The last item is: " << vals.last() << endl;
+
+	vals.append(6);
+	vals.prepend(0);
+
+	out << "Elements: ";
+
+	for (int val : vals) {
+		out << val << " ";
+	}
+
+	out << endl;
 	getchar();
+	return 0;
 }
