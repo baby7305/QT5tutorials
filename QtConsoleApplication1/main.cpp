@@ -1,15 +1,20 @@
 #include <QTextStream>
-#include <QTime>
 #include <QDate>
 
 int main(void) {
 
 	QTextStream out(stdout);
 
-	QDate cd = QDate::currentDate();
-	QTime ct = QTime::currentTime();
+	QDate dt1(2015, 4, 5);
+	QDate dt2(2014, 4, 5);
 
-	out << "Current date is: " << cd.toString() << endl;
-	out << "Current time is: " << ct.toString() << endl;
+	if (dt1 < dt2) {
+		out << dt1.toString() << " comes before "
+			<< dt2.toString() << endl;
+	}
+	else {
+		out << dt1.toString() << " comes after "
+			<< dt2.toString() << endl;
+	}
 	getchar();
 }
