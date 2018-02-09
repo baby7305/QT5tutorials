@@ -1,28 +1,48 @@
 #include <QTextStream>
 
+#define STR_EQUAL 0
+
 int main(void) {
 
 	QTextStream out(stdout);
 
-	QString str = "There are many stars.";
+	QString a = "Rain";
+	QString b = "rain";
+	QString c = "rain\n";
 
-	foreach(QChar qc, str) {
-		out << qc << " ";
+	if (QString::compare(a, b) == STR_EQUAL) {
+		out << "a, b are equal" << endl;
+	}
+	else {
+		out << "a, b are not equal" << endl;
 	}
 
-	out << endl;
+	out << "In case insensitive comparison:" << endl;
 
-	for (QChar *it = str.begin(); it != str.end(); ++it) {
-		out << *it << " ";
+	if (QString::compare(a, b, Qt::CaseInsensitive) == STR_EQUAL) {
+		out << "a, b are equal" << endl;
+	}
+	else {
+		out << "a, b are not equal" << endl;
 	}
 
-	out << endl;
-
-	for (int i = 0; i < str.size(); ++i) {
-		out << str.at(i) << " ";
+	if (QString::compare(b, c) == STR_EQUAL) {
+		out << "b, c are equal" << endl;
+	}
+	else {
+		out << "b, c are not equal" << endl;
 	}
 
-	out << endl;
+	c.chop(1);
+
+	out << "After removing the new line character" << endl;
+
+	if (QString::compare(b, c) == STR_EQUAL) {
+		out << "b, c are equal" << endl;
+	}
+	else {
+		out << "b, c are not equal" << endl;
+	}
 	getchar();
 	return 0;
 }
