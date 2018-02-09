@@ -1,27 +1,29 @@
-#include <QVector>
 #include <QTextStream>
+#include <QList>
+#include <algorithm>
 
 int main(void) {
 
 	QTextStream out(stdout);
 
-	QVector<int> vals = { 1, 2, 3, 4, 5 };
+	QList<QString> authors = { "Balzac", "Tolstoy",
+		"Gulbranssen", "London" };
 
-	out << "The size of the vector is: " << vals.size() << endl;
+	for (int i = 0; i < authors.size(); ++i) {
 
-	out << "The first item is: " << vals.first() << endl;
-	out << "The last item is: " << vals.last() << endl;
-
-	vals.append(6);
-	vals.prepend(0);
-
-	out << "Elements: ";
-
-	for (int val : vals) {
-		out << val << " ";
+		out << authors.at(i) << endl;
 	}
 
-	out << endl;
+	authors << "Galsworthy" << "Sienkiewicz";
+
+	out << "***********************" << endl;
+
+	std::sort(authors.begin(), authors.end());
+
+	out << "Sorted:" << endl;
+	for (QString author : authors) {
+
+		out << author << endl;
+	}
 	getchar();
-	return 0;
 }
