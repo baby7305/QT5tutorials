@@ -5,17 +5,14 @@ int main(void) {
 
 	QTextStream out(stdout);
 
-	QList<QDate> dates({ QDate(2015, 5, 11), QDate(2015, 8, 1),
-		QDate(2015, 2, 30) });
+	QDate dt(2015, 5, 11);
+	QDate nd = dt.addDays(55);
 
-	for (int i = 0; i < dates.size(); i++) {
+	QDate xmas(2015, 12, 24);
 
-		if (dates.at(i).isValid()) {
-			out << "Date " << i + 1 << " is a valid date" << endl;
-		}
-		else {
-			out << "Date " << i + 1 << " is not a valid date" << endl;
-		}
-	}
+	out << "55 days from " << dt.toString() << " is "
+		<< nd.toString() << endl;
+	out << "There are " << QDate::currentDate().daysTo(xmas)
+		<< " days till Christmas" << endl;
 	getchar();
 }
