@@ -1,20 +1,13 @@
 #include <QTextStream>
-#include <QDate>
+#include <QDateTime>
 
 int main(void) {
 
 	QTextStream out(stdout);
 
-	QDate bordate(1812, 9, 7);
-	QDate slavdate(1805, 12, 2);
+	QDateTime cdt = QDateTime::currentDateTime();
 
-	QDate cd = QDate::currentDate();
-
-	int j_today = cd.toJulianDay();
-	int j_borodino = bordate.toJulianDay();
-	int j_slavkov = slavdate.toJulianDay();
-
-	out << "Days since Slavkov battle: " << j_today - j_slavkov << endl;
-	out << "Days since Borodino battle: " << j_today - j_borodino << endl;
+	out << "Universal datetime: " << cdt.toUTC().toString() << endl;
+	out << "Local datetime: " << cdt.toLocalTime().toString() << endl;
 	getchar();
 }
