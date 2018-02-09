@@ -1,17 +1,14 @@
 #include <QTextStream>
-#include <QTime>
+#include <QDate>
 
 int main(void) {
 
 	QTextStream out(stdout);
 
-	QTime ct = QTime::currentTime();
+	QDate cd = QDate::currentDate();
+	int wd = cd.dayOfWeek();
 
-	out << "The time is " << ct.toString("hh:mm:ss.zzz") << endl;
-	out << "The time is " << ct.toString("h:m:s a") << endl;
-	out << "The time is " << ct.toString("H:m:s A") << endl;
-	out << "The time is " << ct.toString("h:m AP") << endl;
-
-	out << "The version of Qt5 is " << qVersion() << endl;
+	out << "Today is " << QDate::shortDayName(wd) << endl;
+	out << "Today is " << QDate::longDayName(wd) << endl;
 	getchar();
 }
