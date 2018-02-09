@@ -7,13 +7,9 @@ int main(void) {
 
 	QDate cd = QDate::currentDate();
 
-	out << "Today is " << cd.toString(Qt::TextDate) << endl;
-	out << "Today is " << cd.toString(Qt::ISODate) << endl;
-	out << "Today is " << cd.toString(Qt::SystemLocaleShortDate) << endl;
-	out << "Today is " << cd.toString(Qt::SystemLocaleLongDate) << endl;
-	out << "Today is " << cd.toString(Qt::DefaultLocaleShortDate) << endl;
-	out << "Today is " << cd.toString(Qt::DefaultLocaleLongDate) << endl;
-	out << "Today is " << cd.toString(Qt::SystemLocaleDate) << endl;
-	out << "Today is " << cd.toString(Qt::LocaleDate) << endl;
+	out << "Today is " << cd.toString("yyyy-MM-dd") << endl;
+	out << "Today is " << cd.toString("yy/M/dd") << endl;
+	out << "Today is " << cd.toString("d. M. yyyy") << endl;
+	out << "Today is " << cd.toString("d-MMMM-yyyy") << endl;
 	getchar();
 }
