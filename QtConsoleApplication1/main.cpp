@@ -1,20 +1,25 @@
 #include <QTextStream>
+#include <QFile>
 
 int main(void) {
 
 	QTextStream out(stdout);
 
-	QString field1 = "Name: ";
-	QString field2 = "Occupation: ";
-	QString field3 = "Residence: ";
-	QString field4 = "Marital status: ";
+	QFile file("res/cprog.c");
 
-	int width = field4.size();
+	if (!file.open(QIODevice::ReadOnly)) {
 
-	out << field1.rightJustified(width, ' ') << "Robert" << endl;
-	out << field2.rightJustified(width, ' ') << "programmer" << endl;
-	out << field3.rightJustified(width, ' ') << "New York" << endl;
-	out << field4.rightJustified(width, ' ') << "single" << endl;
+		qWarning("Cannot open file for reading");
+		getchar();
+		return 1;
+	}
+
+	QTextStream in(&file);
+
+	QString allText = in.readAll();
+	out << allText.toHtmlEscaped() << endl;
+
+	file.close();
 	getchar();
 	return 0;
 }
