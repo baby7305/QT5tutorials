@@ -1,18 +1,13 @@
 #include <QTextStream>
-#include <QDate>
+#include <QDateTime>
 
 int main(void) {
 
 	QTextStream out(stdout);
+	QDateTime cdt = QDateTime::currentDateTime();
 
-	QDate dt(2015, 5, 11);
-	QDate nd = dt.addDays(55);
-
-	QDate xmas(2015, 12, 24);
-
-	out << "55 days from " << dt.toString() << " is "
-		<< nd.toString() << endl;
-	out << "There are " << QDate::currentDate().daysTo(xmas)
-		<< " days till Christmas" << endl;
+	out << "The current datetime is " << cdt.toString() << endl;
+	out << "The current date is " << cdt.date().toString() << endl;
+	out << "The current time is " << cdt.time().toString() << endl;
 	getchar();
 }
