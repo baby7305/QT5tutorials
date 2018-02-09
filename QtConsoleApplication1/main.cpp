@@ -4,16 +4,34 @@ int main(void) {
 
 	QTextStream out(stdout);
 
-	QString s1 = "12";
-	QString s2 = "15";
-	QString s3, s4;
+	int digits = 0;
+	int letters = 0;
+	int spaces = 0;
+	int puncts = 0;
 
-	out << s1.toInt() + s2.toInt() << endl;
+	QString str = "7 white, 3 red roses.";
 
-	int n1 = 30;
-	int n2 = 40;
+	foreach(QChar s, str) {
 
-	out << s3.setNum(n1) + s4.setNum(n2) << endl;
+		if (s.isDigit()) {
+			digits++;
+		}
+		else if (s.isLetter()) {
+			letters++;
+		}
+		else if (s.isSpace()) {
+			spaces++;
+		}
+		else if (s.isPunct()) {
+			puncts++;
+		}
+	}
+
+	out << QString("There are %1 characters").arg(str.count()) << endl;
+	out << QString("There are %1 letters").arg(letters) << endl;
+	out << QString("There are %1 digits").arg(digits) << endl;
+	out << QString("There are %1 spaces").arg(spaces) << endl;
+	out << QString("There are %1 punctuation characters").arg(puncts) << endl;
 	getchar();
 	return 0;
 }
