@@ -1,19 +1,19 @@
 #include <QTextStream>
 #include <QDate>
 
-int main() {
+int main(void) {
 
 	QTextStream out(stdout);
 
-	QList<int> years({ 2010, 2011, 2012, 2013, 2014, 2015, 2016 });
+	QDate cd = QDate::currentDate();
 
-	foreach(int year, years) {
-		if (QDate::isLeapYear(year)) {
-			out << year << " is a leap year" << endl;
-		}
-		else {
-			out << year << " is not a leap year" << endl;
-		}
-	}
+	out << "Today is " << cd.toString(Qt::TextDate) << endl;
+	out << "Today is " << cd.toString(Qt::ISODate) << endl;
+	out << "Today is " << cd.toString(Qt::SystemLocaleShortDate) << endl;
+	out << "Today is " << cd.toString(Qt::SystemLocaleLongDate) << endl;
+	out << "Today is " << cd.toString(Qt::DefaultLocaleShortDate) << endl;
+	out << "Today is " << cd.toString(Qt::DefaultLocaleLongDate) << endl;
+	out << "Today is " << cd.toString(Qt::SystemLocaleDate) << endl;
+	out << "Today is " << cd.toString(Qt::LocaleDate) << endl;
 	getchar();
 }
