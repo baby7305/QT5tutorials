@@ -4,21 +4,16 @@ int main(void) {
 
 	QTextStream out(stdout);
 
-	QString s1 = "There are %1 white roses";
-	int n = 12;
+	QString str = "The night train";
 
-	out << s1.arg(n) << endl;
+	out << str.right(5) << endl;
+	out << str.left(9) << endl;
+	out << str.mid(4, 5) << endl;
 
-	QString s2 = "The tree is %1 m high";
-	double h = 5.65;
+	QString str2("The big apple");
+	QStringRef sub(&str2, 0, 7);
 
-	out << s2.arg(h) << endl;
-
-	QString s3 = "We have %1 lemons and %2 oranges";
-	int ln = 12;
-	int on = 4;
-
-	out << s3.arg(ln).arg(on) << endl;
+	out << sub.toString() << endl;
 	getchar();
 	return 0;
 }
