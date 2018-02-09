@@ -1,20 +1,19 @@
 #include <QTextStream>
 #include <QDate>
 
-int main(void) {
+int main() {
 
 	QTextStream out(stdout);
 
-	QDate dt1(2015, 4, 5);
-	QDate dt2(2014, 4, 5);
+	QList<int> years({ 2010, 2011, 2012, 2013, 2014, 2015, 2016 });
 
-	if (dt1 < dt2) {
-		out << dt1.toString() << " comes before "
-			<< dt2.toString() << endl;
-	}
-	else {
-		out << dt1.toString() << " comes after "
-			<< dt2.toString() << endl;
+	foreach(int year, years) {
+		if (QDate::isLeapYear(year)) {
+			out << year << " is a leap year" << endl;
+		}
+		else {
+			out << year << " is not a leap year" << endl;
+		}
 	}
 	getchar();
 }
