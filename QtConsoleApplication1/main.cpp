@@ -1,15 +1,17 @@
 #include <QTextStream>
-#include <QDate>
+#include <QTime>
 
 int main(void) {
 
 	QTextStream out(stdout);
 
-	QDate cd = QDate::currentDate();
+	QTime ct = QTime::currentTime();
 
-	out << "Today is " << cd.toString("yyyy-MM-dd") << endl;
-	out << "Today is " << cd.toString("yy/M/dd") << endl;
-	out << "Today is " << cd.toString("d. M. yyyy") << endl;
-	out << "Today is " << cd.toString("d-MMMM-yyyy") << endl;
+	out << "The time is " << ct.toString("hh:mm:ss.zzz") << endl;
+	out << "The time is " << ct.toString("h:m:s a") << endl;
+	out << "The time is " << ct.toString("H:m:s A") << endl;
+	out << "The time is " << ct.toString("h:m AP") << endl;
+
+	out << "The version of Qt5 is " << qVersion() << endl;
 	getchar();
 }
