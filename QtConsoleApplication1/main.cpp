@@ -1,36 +1,30 @@
 #include <QTextStream>
-#include <QMap>
+#include <QList>
+#include <algorithm> 
+#include "book.h"
+
+bool compareByTitle(const Book &b1, const Book &b2) {
+
+	return b1.getTitle() < b2.getTitle();
+}
 
 int main(void) {
 
 	QTextStream out(stdout);
 
-	QMap<QString, int> items = { { "coins", 5 },{ "books", 3 } };
+	QList<Book> books = {
+		Book("Jack London", "The Call of the Wild"),
+		Book("Honor¨¦ de Balzac", "Father Goriot"),
+		Book("Leo Tolstoy", "War and Peace"),
+		Book("Gustave Flaubert", "Sentimental education"),
+		Book("Guy de Maupassant", "Une vie"),
+		Book("William Shakespeare", "Hamlet")
+	};
 
-	items.insert("bottles", 7);
+	std::sort(books.begin(), books.end(), compareByTitle);
 
-	QList<int> values = items.values();
-
-	out << "Values:" << endl;
-
-	for (int val : values) {
-		out << val << endl;
-	}
-
-	QList<QString> keys = items.keys();
-
-	out << "Keys:" << endl;
-	for (QString key : keys) {
-		out << key << endl;
-	}
-
-	QMapIterator<QString, int> it(items);
-
-	out << "Pairs:" << endl;
-
-	while (it.hasNext()) {
-		it.next();
-		out << it.key() << ": " << it.value() << endl;
+	for (Book book : books) {
+		out << book.getAuthor() << ": " << book.getTitle() << endl;
 	}
 	getchar();
 }
