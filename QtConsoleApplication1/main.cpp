@@ -1,23 +1,15 @@
 #include <QTextStream>
-#include <QDate>
 #include <QTime>
+#include <QDate>
 
 int main(void) {
 
 	QTextStream out(stdout);
 
-	QDate dt1(2015, 4, 12);
-	out << "The date is " << dt1.toString() << endl;
+	QDate cd = QDate::currentDate();
+	QTime ct = QTime::currentTime();
 
-	QDate dt2;
-	dt2.setDate(2015, 3, 3);
-	out << "The date is " << dt2.toString() << endl;
-
-	QTime tm1(17, 30, 12, 55);
-	out << "The time is " << tm1.toString("hh:mm:ss.zzz") << endl;
-
-	QTime tm2;
-	tm2.setHMS(13, 52, 45, 155);
-	out << "The time is " << tm2.toString("hh:mm:ss.zzz") << endl;
+	out << "Current date is: " << cd.toString() << endl;
+	out << "Current time is: " << ct.toString() << endl;
 	getchar();
 }
