@@ -4,22 +4,17 @@ int main(void) {
 
 	QTextStream out(stdout);
 
-	QString str = "Lovely";
-	str.append(" season");
+	QString field1 = "Name: ";
+	QString field2 = "Occupation: ";
+	QString field3 = "Residence: ";
+	QString field4 = "Marital status: ";
 
-	out << str << endl;
+	int width = field4.size();
 
-	str.remove(10, 3);
-	out << str << endl;
-
-	str.replace(7, 3, "girl");
-	out << str << endl;
-
-	str.clear();
-
-	if (str.isEmpty()) {
-		out << "The string is empty" << endl;
-	}
+	out << field1.rightJustified(width, ' ') << "Robert" << endl;
+	out << field2.rightJustified(width, ' ') << "programmer" << endl;
+	out << field3.rightJustified(width, ' ') << "New York" << endl;
+	out << field4.rightJustified(width, ' ') << "single" << endl;
 	getchar();
 	return 0;
 }
