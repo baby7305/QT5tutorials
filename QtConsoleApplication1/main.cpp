@@ -4,16 +4,25 @@ int main(void) {
 
 	QTextStream out(stdout);
 
-	QString str = "The night train";
+	QString str = "There are many stars.";
 
-	out << str.right(5) << endl;
-	out << str.left(9) << endl;
-	out << str.mid(4, 5) << endl;
+	foreach(QChar qc, str) {
+		out << qc << " ";
+	}
 
-	QString str2("The big apple");
-	QStringRef sub(&str2, 0, 7);
+	out << endl;
 
-	out << sub.toString() << endl;
+	for (QChar *it = str.begin(); it != str.end(); ++it) {
+		out << *it << " ";
+	}
+
+	out << endl;
+
+	for (int i = 0; i < str.size(); ++i) {
+		out << str.at(i) << " ";
+	}
+
+	out << endl;
 	getchar();
 	return 0;
 }
