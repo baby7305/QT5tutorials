@@ -1,33 +1,27 @@
 #include <QTextStream>
-#include <QFileInfo>
+#include <QFile>
 
-int main(int argc, char *argv[]) {
+int main(void) {
 
 	QTextStream out(stdout);
 
-//	if (argc != 2) {
-//
-//		qWarning("Usage: file_size file");
-//		getchar();
-//		return 1;
-//	}
+	QFile file("test.txt");
 
-//	QString filename = argv[1];
-	QString filename = "test.txt";
+	if (!file.open(QIODevice::ReadOnly)) {
 
-	if (!QFile(filename).exists()) {
-
-		qWarning("The file does not exist");
+		qWarning("Cannot open file for reading");
 		getchar();
 		return 1;
 	}
 
-	QFileInfo fileinfo(filename);
+	QTextStream in(&file);
 
-	qint64 size = fileinfo.size();
+	while (!in.atEnd()) {
 
-	QString str = "The size is: %1 bytes";
+		QString line = in.readLine();
+		out << line << endl;
+	}
 
-	out << str.arg(size) << endl;
+	file.close();
 	getchar();
 }
