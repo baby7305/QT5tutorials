@@ -1,19 +1,30 @@
-#include <QHBoxLayout>
+#include <QGridLayout>
 #include <QLabel>
+#include <QLineEdit>
 #include "label.h"
 
-SpinBox::SpinBox(QWidget *parent)
+Ledit::Ledit(QWidget *parent)
 	: QWidget(parent) {
 
-	QHBoxLayout *hbox = new QHBoxLayout(this);
-	hbox->setSpacing(15);
+	QLabel *name = new QLabel("Name:", this);
+	name->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+	QLabel *age = new QLabel("Age:", this);
+	age->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+	QLabel *occupation = new QLabel("Occupation:", this);
+	occupation->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 
-	spinbox = new QSpinBox(this);
-	QLabel *lbl = new QLabel("0", this);
+	QLineEdit *le1 = new QLineEdit(this);
+	QLineEdit *le2 = new QLineEdit(this);
+	QLineEdit *le3 = new QLineEdit(this);
 
-	hbox->addWidget(spinbox);
-	hbox->addWidget(lbl);
+	QGridLayout *grid = new QGridLayout();
 
-	connect(spinbox, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
-		lbl, static_cast<void (QLabel::*)(int)>(&QLabel::setNum));
+	grid->addWidget(name, 0, 0);
+	grid->addWidget(le1, 0, 1);
+	grid->addWidget(age, 1, 0);
+	grid->addWidget(le2, 1, 1);
+	grid->addWidget(occupation, 2, 0);
+	grid->addWidget(le3, 2, 1);
+
+	setLayout(grid);
 }
