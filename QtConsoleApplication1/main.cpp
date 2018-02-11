@@ -1,14 +1,13 @@
 #include <QApplication>
-#include <QWidget>
+#include "snake.h"
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	QWidget window;
+	Snake window;
 
-	window.resize(250, 150);
-	window.setWindowTitle("Simple example");
+	window.setWindowTitle("Snake");
 	window.show();
 
 	return app.exec();
