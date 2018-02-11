@@ -1,14 +1,14 @@
 #include <QApplication>
-#include <QWidget>
+#include <QTextStream>
+#include "label.h"
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	QWidget window;
+	Label window;
 
-	window.resize(250, 150);
-	window.setWindowTitle("Simple example");
+	window.setWindowTitle("QLabel");
 	window.show();
 
 	return app.exec();
