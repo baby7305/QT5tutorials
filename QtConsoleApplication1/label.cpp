@@ -1,17 +1,32 @@
-#include <QPixmap>
-#include <QLabel>
+#include <QFrame>
+#include <QSplitter>
 #include <QHBoxLayout>
 #include "label.h"
 
-Pixmap::Pixmap(QWidget *parent)
+Splitter::Splitter(QWidget *parent)
 	: QWidget(parent) {
 
 	QHBoxLayout *hbox = new QHBoxLayout(this);
 
-	QPixmap pixmap("rotunda.jpg");
+	QFrame *topleft = new QFrame(this);
+	topleft->setFrameShape(QFrame::StyledPanel);
 
-	QLabel *label = new QLabel(this);
-	label->setPixmap(pixmap);
+	QFrame *topright = new QFrame(this);
+	topright->setFrameShape(QFrame::StyledPanel);
 
-	hbox->addWidget(label, 0, Qt::AlignTop);
+	QSplitter *splitter1 = new QSplitter(Qt::Horizontal, this);
+	splitter1->addWidget(topleft);
+	splitter1->addWidget(topright);
+
+	QFrame *bottom = new QFrame(this);
+	bottom->setFrameShape(QFrame::StyledPanel);
+
+	QSplitter *splitter2 = new QSplitter(Qt::Vertical, this);
+	splitter2->addWidget(splitter1);
+	splitter2->addWidget(bottom);
+
+	QList<int> sizes({ 50, 100 });
+	splitter2->setSizes(sizes);
+
+	hbox->addWidget(splitter2);
 }

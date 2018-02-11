@@ -2,8 +2,8 @@
 
 #include <QWidget>
 
-class Pixmap : public QWidget {
+class Splitter : public QWidget {
 
 public:
-	Pixmap(QWidget *parent = 0);
+	Splitter(QWidget *parent = 0);
 };
