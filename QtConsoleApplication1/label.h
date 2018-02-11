@@ -1,13 +1,17 @@
 #pragma once
 
 #include <QWidget>
+#include <QSlider>
 #include <QLabel>
 
-class Label : public QWidget {
+class Slider : public QWidget {
+
+	Q_OBJECT
 
 public:
-	Label(QWidget *parent = 0);
+	Slider(QWidget *parent = 0);
 
 private:
+	QSlider *slider;
 	QLabel *label;
 };
