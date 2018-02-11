@@ -1,13 +1,13 @@
-#include "simplemenu.h"
+#include <simplemenu.h>
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	Checkable window;
+	Toolbar window;
 
-	window.resize(250, 150);
-	window.setWindowTitle("Checkable menu");
+	window.resize(300, 200);
+	window.setWindowTitle("QToolBar");
 	window.show();
 
 	return app.exec();
