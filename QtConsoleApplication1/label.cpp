@@ -1,23 +1,19 @@
 #include <QHBoxLayout>
+#include <QLabel>
 #include "label.h"
 
-ComboBoxEx::ComboBoxEx(QWidget *parent)
+SpinBox::SpinBox(QWidget *parent)
 	: QWidget(parent) {
 
-	QStringList distros = { "Arch", "Xubuntu", "Redhat", "Debian",
-		"Mandriva" };
-
 	QHBoxLayout *hbox = new QHBoxLayout(this);
+	hbox->setSpacing(15);
 
-	combo = new QComboBox();
-	combo->addItems(distros);
+	spinbox = new QSpinBox(this);
+	QLabel *lbl = new QLabel("0", this);
 
-	hbox->addWidget(combo);
-	hbox->addSpacing(15);
+	hbox->addWidget(spinbox);
+	hbox->addWidget(lbl);
 
-	label = new QLabel("Arch", this);
-	hbox->addWidget(label);
-
-	connect(combo, static_cast<void(QComboBox::*)(const QString &)>(&QComboBox::activated),
-		label, &QLabel::setText);
+	connect(spinbox, static_cast<void (QSpinBox::*)(int)>(&QSpinBox::valueChanged),
+		lbl, static_cast<void (QLabel::*)(int)>(&QLabel::setNum));
 }

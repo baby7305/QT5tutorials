@@ -1,17 +1,15 @@
 #pragma once
 
 #include <QWidget>
-#include <QComboBox>
-#include <QLabel>
+#include <QSpinBox>
 
-class ComboBoxEx : public QWidget {
+class SpinBox : public QWidget {
 
 	Q_OBJECT
 
 public:
-	ComboBoxEx(QWidget *parent = 0);
+	SpinBox(QWidget *parent = 0);
 
 private:
-	QComboBox *combo;
-	QLabel *label;
+	QSpinBox *spinbox;
 };

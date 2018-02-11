@@ -5,10 +5,10 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	ComboBoxEx window;
+	SpinBox window;
 
-	window.resize(300, 150);
-	window.setWindowTitle("QComboBox");
+	window.resize(250, 150);
+	window.setWindowTitle("QSpinBox");
 	window.show();
 
 	return app.exec();
