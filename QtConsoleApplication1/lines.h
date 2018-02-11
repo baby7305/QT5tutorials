@@ -2,14 +2,12 @@
 
 #include <QWidget>
 
-class Patterns : public QWidget {
+class TransparentRectangles : public QWidget {
 
 public:
-	Patterns(QWidget *parent = 0);
+	TransparentRectangles(QWidget *parent = 0);
 
 protected:
-	void paintEvent(QPaintEvent *e);
-
-private:
+	void paintEvent(QPaintEvent *event);
 	void doPainting();
 };

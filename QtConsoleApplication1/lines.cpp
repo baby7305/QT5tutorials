@@ -1,47 +1,25 @@
 #include <QApplication>
 #include <QPainter>
+#include <QPainterPath>
 #include "lines.h"
 
-Patterns::Patterns(QWidget *parent)
+TransparentRectangles::TransparentRectangles(QWidget *parent)
 	: QWidget(parent)
 { }
 
-void Patterns::paintEvent(QPaintEvent *e) {
+void TransparentRectangles::paintEvent(QPaintEvent *e) {
 
 	Q_UNUSED(e);
 
 	doPainting();
 }
 
-void Patterns::doPainting() {
+void TransparentRectangles::doPainting() {
 
 	QPainter painter(this);
-	painter.setPen(Qt::NoPen);
 
-	painter.setBrush(Qt::HorPattern);
-	painter.drawRect(10, 15, 90, 60);
-
-	painter.setBrush(Qt::VerPattern);
-	painter.drawRect(130, 15, 90, 60);
-
-	painter.setBrush(Qt::CrossPattern);
-	painter.drawRect(250, 15, 90, 60);
-
-	painter.setBrush(Qt::Dense7Pattern);
-	painter.drawRect(10, 105, 90, 60);
-
-	painter.setBrush(Qt::Dense6Pattern);
-	painter.drawRect(130, 105, 90, 60);
-
-	painter.setBrush(Qt::Dense5Pattern);
-	painter.drawRect(250, 105, 90, 60);
-
-	painter.setBrush(Qt::BDiagPattern);
-	painter.drawRect(10, 195, 90, 60);
-
-	painter.setBrush(Qt::FDiagPattern);
-	painter.drawRect(130, 195, 90, 60);
-
-	painter.setBrush(Qt::DiagCrossPattern);
-	painter.drawRect(250, 195, 90, 60);
+	for (int i = 1; i <= 11; i++) {
+		painter.setOpacity(i*0.1);
+		painter.fillRect(50 * i, 20, 40, 40, Qt::darkGray);
+	}
 }
