@@ -2,14 +2,19 @@
 
 #include <QWidget>
 
-class RadialGradient : public QWidget {
+class Puff : public QWidget {
 
 public:
-	RadialGradient(QWidget *parent = 0);
+	Puff(QWidget *parent = 0);
 
 protected:
-	void paintEvent(QPaintEvent *e);
+	void paintEvent(QPaintEvent *event);
+	void timerEvent(QTimerEvent *event);
 
 private:
+	int x;
+	qreal opacity;
+	int timerId;
+
 	void doPainting();
 };

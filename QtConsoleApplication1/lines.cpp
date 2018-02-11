@@ -1,30 +1,59 @@
-#include <QApplication>
 #include <QPainter>
+#include <QTimer>
+#include <QTextStream>
 #include "lines.h"
 
-RadialGradient::RadialGradient(QWidget *parent)
-	: QWidget(parent)
-{ }
+Puff::Puff(QWidget *parent)
+	: QWidget(parent) {
 
-void RadialGradient::paintEvent(QPaintEvent *e) {
+	x = 1;
+	opacity = 1.0;
+	timerId = startTimer(15);
+}
+
+void Puff::paintEvent(QPaintEvent *e) {
 
 	Q_UNUSED(e);
 
 	doPainting();
 }
 
-void RadialGradient::doPainting() {
+void Puff::doPainting() {
 
 	QPainter painter(this);
+	QTextStream out(stdout);
+
+	QString text = "ZetCode";
+
+	painter.setPen(QPen(QBrush("#575555"), 1));
+
+	QFont font("Courier", x, QFont::DemiBold);
+	QFontMetrics fm(font);
+	int textWidth = fm.width(text);
+
+	painter.setFont(font);
+
+	if (x > 10) {
+		opacity -= 0.01;
+		painter.setOpacity(opacity);
+	}
+
+	if (opacity <= 0) {
+		killTimer(timerId);
+		out << "timer stopped" << endl;
+	}
 
 	int h = height();
 	int w = width();
 
-	QRadialGradient grad1(w / 2, h / 2, 80);
+	painter.translate(QPoint(w / 2, h / 2));
+	painter.drawText(-textWidth / 2, 0, text);
+}
 
-	grad1.setColorAt(0, QColor("#032E91"));
-	grad1.setColorAt(0.3, Qt::white);
-	grad1.setColorAt(1, QColor("#032E91"));
+void Puff::timerEvent(QTimerEvent *e) {
 
-	painter.fillRect(0, 0, w, h, grad1);
+	Q_UNUSED(e);
+
+	x += 1;
+	repaint();
 }
