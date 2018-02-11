@@ -1,4 +1,3 @@
-#include <QDesktopWidget>
 #include <QApplication>
 #include "label.h"
 
@@ -6,10 +5,10 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	Splitter window;
+	Table window;
 
-	window.resize(350, 300);
-	window.setWindowTitle("QSplitter");
+	window.resize(400, 250);
+	window.setWindowTitle("QTableWidget");
 	window.show();
 
 	return app.exec();

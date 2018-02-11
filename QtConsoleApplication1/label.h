@@ -2,8 +2,8 @@
 
 #include <QWidget>
 
-class Splitter : public QWidget {
+class Table : public QWidget {
 
 public:
-	Splitter(QWidget *parent = 0);
+	Table(QWidget *parent = 0);
 };

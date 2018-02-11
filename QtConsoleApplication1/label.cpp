@@ -1,32 +1,13 @@
-#include <QFrame>
-#include <QSplitter>
 #include <QHBoxLayout>
+#include <QTableWidget>
 #include "label.h"
 
-Splitter::Splitter(QWidget *parent)
+Table::Table(QWidget *parent)
 	: QWidget(parent) {
 
 	QHBoxLayout *hbox = new QHBoxLayout(this);
 
-	QFrame *topleft = new QFrame(this);
-	topleft->setFrameShape(QFrame::StyledPanel);
+	QTableWidget *table = new QTableWidget(25, 25, this);
 
-	QFrame *topright = new QFrame(this);
-	topright->setFrameShape(QFrame::StyledPanel);
-
-	QSplitter *splitter1 = new QSplitter(Qt::Horizontal, this);
-	splitter1->addWidget(topleft);
-	splitter1->addWidget(topright);
-
-	QFrame *bottom = new QFrame(this);
-	bottom->setFrameShape(QFrame::StyledPanel);
-
-	QSplitter *splitter2 = new QSplitter(Qt::Vertical, this);
-	splitter2->addWidget(splitter1);
-	splitter2->addWidget(bottom);
-
-	QList<int> sizes({ 50, 100 });
-	splitter2->setSizes(sizes);
-
-	hbox->addWidget(splitter2);
+	hbox->addWidget(table);
 }
