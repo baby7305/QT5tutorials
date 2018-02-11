@@ -1,37 +1,20 @@
-#include <QVBoxLayout>
-#include <QPushButton>
-#include <QListWidget>
+#include <QFormLayout>
+#include <QLabel>
+#include <QLineEdit>
 #include "verticalbox.h"
 
-Layouts::Layouts(QWidget *parent)
+FormEx::FormEx(QWidget *parent)
 	: QWidget(parent) {
 
-	QVBoxLayout *vbox = new QVBoxLayout();
-	QHBoxLayout *hbox = new QHBoxLayout(this);
+	QLineEdit *nameEdit = new QLineEdit(this);
+	QLineEdit *addrEdit = new QLineEdit(this);
+	QLineEdit *occpEdit = new QLineEdit(this);
 
-	QListWidget *lw = new QListWidget(this);
-	lw->addItem("The Omen");
-	lw->addItem("The Exorcist");
-	lw->addItem("Notes on a scandal");
-	lw->addItem("Fargo");
-	lw->addItem("Capote");
+	QFormLayout *formLayout = new QFormLayout;
+	formLayout->setLabelAlignment(Qt::AlignRight | Qt::AlignVCenter);
+	formLayout->addRow("Name:", nameEdit);
+	formLayout->addRow("Email:", addrEdit);
+	formLayout->addRow("Age:", occpEdit);
 
-	QPushButton *add = new QPushButton("Add", this);
-	QPushButton *rename = new QPushButton("Rename", this);
-	QPushButton *remove = new QPushButton("Remove", this);
-	QPushButton *removeall = new QPushButton("Remove All", this);
-
-	vbox->setSpacing(3);
-	vbox->addStretch(1);
-	vbox->addWidget(add);
-	vbox->addWidget(rename);
-	vbox->addWidget(remove);
-	vbox->addWidget(removeall);
-	vbox->addStretch(1);
-
-	hbox->addWidget(lw);
-	hbox->addSpacing(15);
-	hbox->addLayout(vbox);
-
-	setLayout(hbox);
+	setLayout(formLayout);
 }

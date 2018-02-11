@@ -2,8 +2,8 @@
 
 #include <QWidget>
 
-class Layouts : public QWidget {
+class FormEx : public QWidget {
 
 public:
-	Layouts(QWidget *parent = 0);
+	FormEx(QWidget *parent = 0);
 };

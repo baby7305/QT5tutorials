@@ -5,9 +5,9 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	Layouts window;
+	FormEx window;
 
-	window.setWindowTitle("Layouts");
+	window.setWindowTitle("Form example");
 	window.show();
 
 	return app.exec();
