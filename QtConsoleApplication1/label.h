@@ -1,14 +1,26 @@
 #pragma once
 
 #include <QWidget>
+#include <QPushButton>
+#include <QListWidget>
 
-class CheckBox : public QWidget {
+class ListWidget : public QWidget {
 
 	Q_OBJECT
 
 public:
-	CheckBox(QWidget *parent = 0);
+	ListWidget(QWidget *parent = 0);
 
 	private slots:
-	void showTitle(int);
+	void addItem();
+	void renameItem();
+	void removeItem();
+	void clearItems();
+
+private:
+	QListWidget *lw;
+	QPushButton *add;
+	QPushButton *rename;
+	QPushButton *remove;
+	QPushButton *removeAll;
 };

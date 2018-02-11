@@ -5,10 +5,9 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	CheckBox window;
+	ListWidget window;
 
-	window.resize(250, 150);
-	window.setWindowTitle("QCheckBox");
+	window.setWindowTitle("QListWidget");
 	window.show();
 
 	return app.exec();
