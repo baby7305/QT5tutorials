@@ -5,10 +5,10 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	Lines window;
+	Colours window;
 
-	window.resize(280, 270);
-	window.setWindowTitle("Lines");
+	window.resize(360, 280);
+	window.setWindowTitle("Colours");
 	window.show();
 
 	return app.exec();

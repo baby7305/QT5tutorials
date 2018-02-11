@@ -1,48 +1,46 @@
 #include <QPainter>
 #include "lines.h"
 
-Lines::Lines(QWidget *parent)
+Colours::Colours(QWidget *parent)
 	: QWidget(parent)
 { }
 
-void Lines::paintEvent(QPaintEvent *e) {
+void Colours::paintEvent(QPaintEvent *e) {
 
 	Q_UNUSED(e);
 
-	QPainter qp(this);
-	drawLines(&qp);
+	doPainting();
 }
 
-void Lines::drawLines(QPainter *qp) {
+void Colours::doPainting() {
 
-	QPen pen(Qt::black, 2, Qt::SolidLine);
-	qp->setPen(pen);
-	qp->drawLine(20, 40, 250, 40);
+	QPainter painter(this);
+	painter.setPen(QColor("#d4d4d4"));
 
-	pen.setStyle(Qt::DashLine);
-	qp->setPen(pen);
-	qp->drawLine(20, 80, 250, 80);
+	painter.setBrush(QBrush("#c56c00"));
+	painter.drawRect(10, 15, 90, 60);
 
-	pen.setStyle(Qt::DashDotLine);
-	qp->setPen(pen);
-	qp->drawLine(20, 120, 250, 120);
+	painter.setBrush(QBrush("#1ac500"));
+	painter.drawRect(130, 15, 90, 60);
 
-	pen.setStyle(Qt::DotLine);
-	qp->setPen(pen);
-	qp->drawLine(20, 160, 250, 160);
+	painter.setBrush(QBrush("#539e47"));
+	painter.drawRect(250, 15, 90, 60);
 
-	pen.setStyle(Qt::DashDotDotLine);
-	qp->setPen(pen);
-	qp->drawLine(20, 200, 250, 200);
+	painter.setBrush(QBrush("#004fc5"));
+	painter.drawRect(10, 105, 90, 60);
 
-	QVector<qreal> dashes;
-	qreal space = 4;
+	painter.setBrush(QBrush("#c50024"));
+	painter.drawRect(130, 105, 90, 60);
 
-	dashes << 1 << space << 5 << space;
+	painter.setBrush(QBrush("#9e4757"));
+	painter.drawRect(250, 105, 90, 60);
 
-	pen.setStyle(Qt::CustomDashLine);
-	pen.setDashPattern(dashes);
+	painter.setBrush(QBrush("#5f3b00"));
+	painter.drawRect(10, 195, 90, 60);
 
-	qp->setPen(pen);
-	qp->drawLine(20, 240, 250, 240);
+	painter.setBrush(QBrush("#4c4c4c"));
+	painter.drawRect(130, 195, 90, 60);
+
+	painter.setBrush(QBrush("#785f36"));
+	painter.drawRect(250, 195, 90, 60);
 }

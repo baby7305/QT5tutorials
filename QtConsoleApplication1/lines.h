@@ -1,13 +1,15 @@
-#pragma once
+#pragma once 
 
 #include <QWidget>
 
-class Lines : public QWidget {
+class Colours : public QWidget {
 
 public:
-	Lines(QWidget *parent = 0);
+	Colours(QWidget *parent = 0);
 
 protected:
-	void paintEvent(QPaintEvent *event);
-	void drawLines(QPainter *qp);
+	void paintEvent(QPaintEvent *e);
+
+private:
+	void doPainting();
 };
