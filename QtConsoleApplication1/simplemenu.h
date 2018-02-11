@@ -3,8 +3,8 @@
 #include <QMainWindow>
 #include <QApplication>
 
-class SimpleMenu : public QMainWindow {
+class AnotherMenu : public QMainWindow {
 
 public:
-	SimpleMenu(QWidget *parent = 0);
+	AnotherMenu(QWidget *parent = 0);
 };

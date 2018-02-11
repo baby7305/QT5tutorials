@@ -24,15 +24,8 @@
       <Extensions>moc;h;cpp</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{fdbc32b9-2cc9-4d54-b248-de42c62c38a6}</UniqueIdentifier>
-      <Extensions>cpp;moc</Extensions>
-      <SourceControlFiles>False</SourceControlFiles>
-    </Filter>
-    <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{3b8bc9da-99ea-4172-ae99-db2a10e02828}</UniqueIdentifier>
-      <Extensions>cpp;moc</Extensions>
-      <SourceControlFiles>False</SourceControlFiles>
+    <Filter Include="res">
+      <UniqueIdentifier>{9d6bf2be-e465-4cb1-b2dd-7589d6bbe8cf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,5 +40,16 @@
     <CustomBuild Include="simplemenu.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="new.png">
+      <Filter>res</Filter>
+    </Image>
+    <Image Include="open.png">
+      <Filter>res</Filter>
+    </Image>
+    <Image Include="quit.png">
+      <Filter>res</Filter>
+    </Image>
   </ItemGroup>
 </Project>
