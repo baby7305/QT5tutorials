@@ -1,28 +1,25 @@
 #include <QTextStream>
-#include <QFile>
+#include <QFileInfo>
 
 int main(int argc, char *argv[]) {
 
 	QTextStream out(stdout);
 
-//	if (argc != 3) {
+//	if (argc != 2) {
 //
-//		qWarning("Usage: copyfile source destination");
+//		qWarning("Usage: owner file");
 //		return 1;
 //	}
 
-//	QString source = argv[1];
-	QString source = "test.txt";
+//	QString filename = argv[1];
+	QString filename = "F:/test.txt";
 
-	if (!QFile(source).exists()) {
-		qWarning("The source file does not exist");
-		getchar();
-		return 1;
-	}
+	QFileInfo fileinfo(filename);
 
-//	QString destin(argv[2]);
-	QString destin("F:/test.txt");
+	QString group = fileinfo.group();
+	QString owner = fileinfo.owner();
 
-	QFile::copy(source, destin);
+	out << "Group: " << group << endl;
+	out << "Owner: " << owner << endl;
 	getchar();
 }
