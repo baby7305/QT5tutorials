@@ -1,26 +1,26 @@
 #pragma once
 
 #include <QWidget>
+#include <QProgressBar>
 #include <QPushButton>
-#include <QListWidget>
 
-class ListWidget : public QWidget {
+class ProgressBarEx : public QWidget {
 
 	Q_OBJECT
 
 public:
-	ListWidget(QWidget *parent = 0);
-
-	private slots:
-	void addItem();
-	void renameItem();
-	void removeItem();
-	void clearItems();
+	ProgressBarEx(QWidget *parent = 0);
 
 private:
-	QListWidget *lw;
-	QPushButton *add;
-	QPushButton *rename;
-	QPushButton *remove;
-	QPushButton *removeAll;
+	int progress;
+	QTimer *timer;
+	QProgressBar *pbar;
+	QPushButton *startBtn;
+	QPushButton *stopBtn;
+	static const int DELAY = 200;
+	static const int MAX_VALUE = 100;
+
+	void updateBar();
+	void startMyTimer();
+	void stopMyTimer();
 };

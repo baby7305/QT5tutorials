@@ -1,94 +1,68 @@
-#include <QVBoxLayout>
-#include <QInputDialog>
+#include <QProgressBar>
+#include <QTimer>
+#include <QGridLayout>
 #include "label.h"
 
-ListWidget::ListWidget(QWidget *parent)
+ProgressBarEx::ProgressBarEx(QWidget *parent)
 	: QWidget(parent) {
 
-	QVBoxLayout *vbox = new QVBoxLayout();
-	vbox->setSpacing(10);
+	progress = 0;
+	timer = new QTimer(this);
+	connect(timer, &QTimer::timeout, this, &ProgressBarEx::updateBar);
 
-	QHBoxLayout *hbox = new QHBoxLayout(this);
+	QGridLayout *grid = new QGridLayout(this);
+	grid->setColumnStretch(2, 1);
 
-	lw = new QListWidget(this);
-	lw->addItem("The Omen");
-	lw->addItem("The Exorcist");
-	lw->addItem("Notes on a scandal");
-	lw->addItem("Fargo");
-	lw->addItem("Capote");
+	pbar = new QProgressBar();
+	grid->addWidget(pbar, 0, 0, 1, 3);
 
-	add = new QPushButton("Add", this);
-	rename = new QPushButton("Rename", this);
-	remove = new QPushButton("Remove", this);
-	removeAll = new QPushButton("Remove All", this);
+	startBtn = new QPushButton("Start", this);
+	connect(startBtn, &QPushButton::clicked, this, &ProgressBarEx::startMyTimer);
+	grid->addWidget(startBtn, 1, 0, 1, 1);
 
-	vbox->setSpacing(3);
-	vbox->addStretch(1);
-	vbox->addWidget(add);
-	vbox->addWidget(rename);
-	vbox->addWidget(remove);
-	vbox->addWidget(removeAll);
-	vbox->addStretch(1);
-
-	hbox->addWidget(lw);
-	hbox->addSpacing(15);
-	hbox->addLayout(vbox);
-
-	connect(add, &QPushButton::clicked, this, &ListWidget::addItem);
-	connect(rename, &QPushButton::clicked, this, &ListWidget::renameItem);
-	connect(remove, &QPushButton::clicked, this, &ListWidget::removeItem);
-	connect(removeAll, &QPushButton::clicked, this, &ListWidget::clearItems);
-
-	setLayout(hbox);
+	stopBtn = new QPushButton("Stop", this);
+	connect(stopBtn, &QPushButton::clicked, this, &ProgressBarEx::stopMyTimer);
+	grid->addWidget(stopBtn, 1, 1);
 }
 
-void ListWidget::addItem() {
+void ProgressBarEx::startMyTimer() {
 
-	QString c_text = QInputDialog::getText(this, "Item", "Enter new item");
-	QString s_text = c_text.simplified();
+	if (progress >= MAX_VALUE) {
 
-	if (!s_text.isEmpty()) {
+		progress = 0;
+		pbar->setValue(0);
+	}
 
-		lw->addItem(s_text);
-		int r = lw->count() - 1;
-		lw->setCurrentRow(r);
+	if (!timer->isActive()) {
+
+		startBtn->setEnabled(false);
+		stopBtn->setEnabled(true);
+		timer->start(DELAY);
 	}
 }
 
-void ListWidget::renameItem() {
+void ProgressBarEx::stopMyTimer() {
 
-	QListWidgetItem *curitem = lw->currentItem();
+	if (timer->isActive()) {
 
-	int r = lw->row(curitem);
-	QString c_text = curitem->text();
-	QString r_text = QInputDialog::getText(this, "Item",
-		"Enter new item", QLineEdit::Normal, c_text);
-
-	QString s_text = r_text.simplified();
-
-	if (!s_text.isEmpty()) {
-
-		QListWidgetItem *item = lw->takeItem(r);
-		delete item;
-		lw->insertItem(r, s_text);
-		lw->setCurrentRow(r);
+		startBtn->setEnabled(true);
+		stopBtn->setEnabled(false);
+		timer->stop();
 	}
 }
 
-void ListWidget::removeItem() {
+void ProgressBarEx::updateBar() {
 
-	int r = lw->currentRow();
+	progress++;
 
-	if (r != -1) {
+	if (progress <= MAX_VALUE) {
 
-		QListWidgetItem *item = lw->takeItem(r);
-		delete item;
+		pbar->setValue(progress);
 	}
-}
+	else {
 
-void ListWidget::clearItems() {
-
-	if (lw->count() != 0) {
-		lw->clear();
+		timer->stop();
+		startBtn->setEnabled(true);
+		stopBtn->setEnabled(false);
 	}
 }

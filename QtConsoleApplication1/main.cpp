@@ -5,9 +5,10 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	ListWidget window;
+	ProgressBarEx window;
 
-	window.setWindowTitle("QListWidget");
+	window.resize(250, 150);
+	window.setWindowTitle("QProgressBar");
 	window.show();
 
 	return app.exec();
