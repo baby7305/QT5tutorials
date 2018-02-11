@@ -5,10 +5,9 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	ProgressBarEx window;
+	Pixmap window;
 
-	window.resize(250, 150);
-	window.setWindowTitle("QProgressBar");
+	window.setWindowTitle("QPixmap");
 	window.show();
 
 	return app.exec();
