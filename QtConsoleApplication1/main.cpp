@@ -1,28 +1,28 @@
 #include <QTextStream>
 #include <QFile>
 
-int main(void) {
+int main(int argc, char *argv[]) {
 
 	QTextStream out(stdout);
 
-	QString filename = "F:/test.txt";
-	QFile file(filename);
+//	if (argc != 3) {
+//
+//		qWarning("Usage: copyfile source destination");
+//		return 1;
+//	}
 
-	if (file.open(QIODevice::WriteOnly)) {
+//	QString source = argv[1];
+	QString source = "test.txt";
 
-		QTextStream out(&file);
-		out << "Xubuntu" << endl;
-		out << "Arch" << endl;
-		out << "Debian" << endl;
-		out << "Redhat" << endl;
-		out << "Slackware" << endl;
-
-	}
-	else {
-
-		qWarning("Could not open file");
+	if (!QFile(source).exists()) {
+		qWarning("The source file does not exist");
+		getchar();
+		return 1;
 	}
 
-	file.close();
+//	QString destin(argv[2]);
+	QString destin("F:/test.txt");
+
+	QFile::copy(source, destin);
 	getchar();
 }
