@@ -3,8 +3,16 @@
 #include <QMainWindow>
 #include <QApplication>
 
-class AnotherMenu : public QMainWindow {
+class Checkable : public QMainWindow {
+
+	Q_OBJECT
 
 public:
-	AnotherMenu(QWidget *parent = 0);
+	Checkable(QWidget *parent = 0);
+
+	private slots:
+	void toggleStatusbar();
+
+private:
+	QAction *viewst;
 };

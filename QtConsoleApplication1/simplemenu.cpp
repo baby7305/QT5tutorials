@@ -1,27 +1,32 @@
-#include "simplemenu.h"
 #include <QMenu>
 #include <QMenuBar>
+#include <QStatusBar>
+#include "simplemenu.h"
 
-AnotherMenu::AnotherMenu(QWidget *parent)
+Checkable::Checkable(QWidget *parent)
 	: QMainWindow(parent) {
 
-	QPixmap newpix("new.png");
-	QPixmap openpix("open.png");
-	QPixmap quitpix("quit.png");
-
-	QAction *newa = new QAction(newpix, "&New", this);
-	QAction *open = new QAction(openpix, "&Open", this);
-	QAction *quit = new QAction(quitpix, "&Quit", this);
-	quit->setShortcut(tr("CTRL+Q"));
+	viewst = new QAction("&View statusbar", this);
+	viewst->setCheckable(true);
+	viewst->setChecked(true);
 
 	QMenu *file;
 	file = menuBar()->addMenu("&File");
-	file->addAction(newa);
-	file->addAction(open);
-	file->addSeparator();
-	file->addAction(quit);
+	file->addAction(viewst);
 
-	qApp->setAttribute(Qt::AA_DontShowIconsInMenus, false);
+	statusBar();
 
-	connect(quit, &QAction::triggered, qApp, &QApplication::quit);
+	connect(viewst, &QAction::triggered, this, &Checkable::toggleStatusbar);
+}
+
+void Checkable::toggleStatusbar() {
+
+	if (viewst->isChecked()) {
+
+		statusBar()->show();
+	}
+	else {
+
+		statusBar()->hide();
+	}
 }
