@@ -1,9 +1,20 @@
 #pragma once
 
-#include <QWidget>
+#include <QMainWindow>
+#include <QPushButton>
 
-class Ledit : public QWidget {
+class Statusbar : public QMainWindow {
+
+	Q_OBJECT
 
 public:
-	Ledit(QWidget *parent = 0);
+	Statusbar(QWidget *parent = 0);
+
+	private slots:
+	void OnOkPressed();
+	void OnApplyPressed();
+
+private:
+	QPushButton *okBtn;
+	QPushButton *aplBtn;
 };

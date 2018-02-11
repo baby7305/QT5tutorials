@@ -1,30 +1,35 @@
-#include <QGridLayout>
 #include <QLabel>
-#include <QLineEdit>
+#include <QFrame>
+#include <QStatusBar>
+#include <QHBoxLayout>
 #include "label.h"
 
-Ledit::Ledit(QWidget *parent)
-	: QWidget(parent) {
+Statusbar::Statusbar(QWidget *parent)
+	: QMainWindow(parent) {
 
-	QLabel *name = new QLabel("Name:", this);
-	name->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-	QLabel *age = new QLabel("Age:", this);
-	age->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
-	QLabel *occupation = new QLabel("Occupation:", this);
-	occupation->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
+	QFrame *frame = new QFrame(this);
+	setCentralWidget(frame);
 
-	QLineEdit *le1 = new QLineEdit(this);
-	QLineEdit *le2 = new QLineEdit(this);
-	QLineEdit *le3 = new QLineEdit(this);
+	QHBoxLayout *hbox = new QHBoxLayout(frame);
 
-	QGridLayout *grid = new QGridLayout();
+	okBtn = new QPushButton("OK", frame);
+	hbox->addWidget(okBtn, 0, Qt::AlignLeft | Qt::AlignTop);
 
-	grid->addWidget(name, 0, 0);
-	grid->addWidget(le1, 0, 1);
-	grid->addWidget(age, 1, 0);
-	grid->addWidget(le2, 1, 1);
-	grid->addWidget(occupation, 2, 0);
-	grid->addWidget(le3, 2, 1);
+	aplBtn = new QPushButton("Apply", frame);
+	hbox->addWidget(aplBtn, 1, Qt::AlignLeft | Qt::AlignTop);
 
-	setLayout(grid);
+	statusBar();
+
+	connect(okBtn, &QPushButton::clicked, this, &Statusbar::OnOkPressed);
+	connect(aplBtn, &QPushButton::clicked, this, &Statusbar::OnApplyPressed);
+}
+
+void Statusbar::OnOkPressed() {
+
+	statusBar()->showMessage("OK button pressed", 2000);
+}
+
+void Statusbar::OnApplyPressed() {
+
+	statusBar()->showMessage("Apply button pressed", 2000);
 }
