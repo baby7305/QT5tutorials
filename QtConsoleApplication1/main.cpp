@@ -1,14 +1,13 @@
-#include <QApplication>
-#include <QWidget>
+#include "simplemenu.h"
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	QWidget window;
+	SimpleMenu window;
 
 	window.resize(250, 150);
-	window.setWindowTitle("Simple example");
+	window.setWindowTitle("Simple menu");
 	window.show();
 
 	return app.exec();
