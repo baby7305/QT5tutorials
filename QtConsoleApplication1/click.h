@@ -1,19 +1,16 @@
 #pragma once
 
 #include <QWidget>
-#include <QPushButton>
+#include <QLabel>
 
-class Disconnect : public QWidget {
-
-	Q_OBJECT
+class Timer : public QWidget {
 
 public:
-	Disconnect(QWidget *parent = 0);
+	Timer(QWidget *parent = 0);
 
-	private slots:
-	void onClick();
-	void onCheck(int);
+protected:
+	void timerEvent(QTimerEvent *e);
 
 private:
-	QPushButton *clickBtn;
+	QLabel *label;
 };

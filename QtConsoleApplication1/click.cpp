@@ -1,42 +1,28 @@
-#include <QTextStream>
-#include <QCheckBox>
 #include <QHBoxLayout>
+#include <QTime>
 #include "click.h"
 
-Disconnect::Disconnect(QWidget *parent)
+Timer::Timer(QWidget *parent)
 	: QWidget(parent) {
 
 	QHBoxLayout *hbox = new QHBoxLayout(this);
 	hbox->setSpacing(5);
 
-	clickBtn = new QPushButton("Click", this);
-	hbox->addWidget(clickBtn, 0, Qt::AlignLeft | Qt::AlignTop);
+	label = new QLabel("", this);
+	hbox->addWidget(label, 0, Qt::AlignLeft | Qt::AlignTop);
 
-	QCheckBox *cb = new QCheckBox("Connect", this);
-	cb->setCheckState(Qt::Checked);
-	hbox->addWidget(cb, 0, Qt::AlignLeft | Qt::AlignTop);
+	QTime qtime = QTime::currentTime();
+	QString stime = qtime.toString();
+	label->setText(stime);
 
-	connect(clickBtn, &QPushButton::clicked, this, &Disconnect::onClick);
-	connect(cb, &QCheckBox::stateChanged, this, &Disconnect::onCheck);
+	startTimer(1000);
 }
 
-void Disconnect::onClick() {
+void Timer::timerEvent(QTimerEvent *e) {
 
-	QTextStream out(stdout);
-	//	out << "Button clicked" << endl;
-	QString test = "Button clicked";
-	setWindowTitle(test);
-}
+	Q_UNUSED(e);
 
-void Disconnect::onCheck(int state) {
-
-	if (state == Qt::Checked) {
-		connect(clickBtn, &QPushButton::clicked, this, &Disconnect::onClick);
-		setWindowTitle("con");
-	}
-	else {
-		disconnect(clickBtn, &QPushButton::clicked, this,
-			&Disconnect::onClick);
-		setWindowTitle("discon");
-	}
+	QTime qtime = QTime::currentTime();
+	QString stime = qtime.toString();
+	label->setText(stime);
 }
