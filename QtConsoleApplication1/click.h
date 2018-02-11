@@ -2,8 +2,11 @@
 
 #include <QWidget>
 
-class Click : public QWidget {
+class KeyPress : public QWidget {
 
 public:
-	Click(QWidget *parent = 0);
+	KeyPress(QWidget *parent = 0);
+
+protected:
+	void keyPressEvent(QKeyEvent * e);
 };
