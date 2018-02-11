@@ -6,10 +6,10 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	TransparentRectangles window;
+	Donut window;
 
-	window.resize(630, 90);
-	window.setWindowTitle("Transparent rectangles");
+	window.resize(350, 280);
+	window.setWindowTitle("Donut");
 	window.show();
 
 	return app.exec();

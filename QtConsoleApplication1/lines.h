@@ -2,12 +2,14 @@
 
 #include <QWidget>
 
-class TransparentRectangles : public QWidget {
+class Donut : public QWidget {
 
 public:
-	TransparentRectangles(QWidget *parent = 0);
+	Donut(QWidget *parent = 0);
 
 protected:
-	void paintEvent(QPaintEvent *event);
+	void paintEvent(QPaintEvent *e);
+
+private:
 	void doPainting();
 };
