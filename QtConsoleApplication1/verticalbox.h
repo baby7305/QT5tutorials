@@ -2,9 +2,8 @@
 
 #include <QWidget>
 
-class Calculator : public QWidget {
+class Review : public QWidget {
 
 public:
-	Calculator(QWidget *parent = 0);
-
+	Review(QWidget *parent = 0);
 };

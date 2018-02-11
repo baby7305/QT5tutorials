@@ -1,30 +1,36 @@
 #include <QGridLayout>
-#include <QPushButton>
-#include "verticalbox.h"
+#include <QLabel>
+#include <QLineEdit>
+#include <QTextEdit>
+#include <verticalbox.h>
 
-Calculator::Calculator(QWidget *parent)
+Review::Review(QWidget *parent)
 	: QWidget(parent) {
 
 	QGridLayout *grid = new QGridLayout(this);
-	grid->setSpacing(2);
+	grid->setVerticalSpacing(15);
+	grid->setHorizontalSpacing(10);
 
-	QList<QString> values({ "7", "8", "9", "/",
-		"4", "5", "6", "*",
-		"1", "2", "3", "-",
-		"0", ".", "=", "+"
-	});
+	QLabel *title = new QLabel("Title:", this);
+	grid->addWidget(title, 0, 0, 1, 1);
+	title->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 
-	int pos = 0;
+	QLineEdit *edt1 = new QLineEdit(this);
+	grid->addWidget(edt1, 0, 1, 1, 1);
 
-	for (int i = 0; i<4; i++) {
-		for (int j = 0; j<4; j++) {
+	QLabel *author = new QLabel("Author:", this);
+	grid->addWidget(author, 1, 0, 1, 1);
+	author->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 
-			QPushButton *btn = new QPushButton(values[pos], this);
-			btn->setFixedSize(40, 40);
-			grid->addWidget(btn, i, j);
-			pos++;
-		}
-	}
+	QLineEdit *edt2 = new QLineEdit(this);
+	grid->addWidget(edt2, 1, 1, 1, 1);
+
+	QLabel *review = new QLabel("Review:", this);
+	grid->addWidget(review, 2, 0, 1, 1);
+	review->setAlignment(Qt::AlignRight | Qt::AlignTop);
+
+	QTextEdit *te = new QTextEdit(this);
+	grid->addWidget(te, 2, 1, 3, 1);
 
 	setLayout(grid);
 }

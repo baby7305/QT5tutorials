@@ -1,14 +1,13 @@
 #include <QApplication>
-#include "verticalbox.h"
+#include <verticalbox.h>
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	Calculator window;
+	Review window;
 
-	window.move(300, 300);
-	window.setWindowTitle("Calculator");
+	window.setWindowTitle("Review");
 	window.show();
 
 	return app.exec();
