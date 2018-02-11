@@ -1,30 +1,13 @@
-#include <QApplication>
-#include <QWidget>
-#include <QPushButton>
-
-class MyButton : public QWidget {
-
-public:
-	MyButton(QWidget *parent = 0);
-};
-
-MyButton::MyButton(QWidget *parent)
-	: QWidget(parent) {
-
-	QPushButton *quitBtn = new QPushButton("Quit", this);
-	quitBtn->setGeometry(50, 40, 75, 30);
-
-	connect(quitBtn, &QPushButton::clicked, qApp, &QApplication::quit);
-}
+#include "plusminus.h"
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	MyButton window;
+	PlusMinus window;
 
-	window.resize(250, 150);
-	window.setWindowTitle("QPushButton");
+	window.resize(300, 190);
+	window.setWindowTitle("Plus minus");
 	window.show();
 
 	return app.exec();
