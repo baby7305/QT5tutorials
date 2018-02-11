@@ -1,14 +1,27 @@
 #include <QApplication>
-#include <QWidget>
+#include <QDesktopWidget>
+#include <QTextEdit>
+
+class Absolute : public QWidget {
+
+public:
+	Absolute(QWidget *parent = 0);
+};
+
+Absolute::Absolute(QWidget *parent)
+	: QWidget(parent) {
+
+	QTextEdit *ledit = new QTextEdit(this);
+	ledit->setGeometry(5, 5, 200, 150);
+}
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	QWidget window;
+	Absolute window;
 
-	window.resize(250, 150);
-	window.setWindowTitle("Simple example");
+	window.setWindowTitle("Absolute");
 	window.show();
 
 	return app.exec();
