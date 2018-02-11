@@ -1,14 +1,16 @@
-#include <QApplication>
-#include <QKeyEvent>
+#include <QMoveEvent>
 #include "click.h"
 
-KeyPress::KeyPress(QWidget *parent)
+Move::Move(QWidget *parent)
 	: QWidget(parent)
 { }
 
-void KeyPress::keyPressEvent(QKeyEvent *event) {
+void Move::moveEvent(QMoveEvent *e) {
 
-	if (event->key() == Qt::Key_Escape) {
-		qApp->quit();
-	}
+	int x = e->pos().x();
+	int y = e->pos().y();
+
+	QString text = QString::number(x) + "," + QString::number(y);
+
+	setWindowTitle(text);
 }

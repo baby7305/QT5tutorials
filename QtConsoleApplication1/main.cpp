@@ -5,10 +5,10 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	KeyPress window;
+	Move window;
 
 	window.resize(250, 150);
-	window.setWindowTitle("Key press");
+	window.setWindowTitle("Move");
 	window.show();
 
 	return app.exec();

@@ -1,12 +1,14 @@
 #pragma once
 
-#include <QWidget>
+#include <QMainWindow>
 
-class KeyPress : public QWidget {
+class Move : public QWidget {
+
+	Q_OBJECT
 
 public:
-	KeyPress(QWidget *parent = 0);
+	Move(QWidget *parent = 0);
 
 protected:
-	void keyPressEvent(QKeyEvent * e);
+	void moveEvent(QMoveEvent *e);
 };
