@@ -1,17 +1,17 @@
 #pragma once
 
 #include <QWidget>
-#include <QSlider>
+#include <QComboBox>
 #include <QLabel>
 
-class Slider : public QWidget {
+class ComboBoxEx : public QWidget {
 
 	Q_OBJECT
 
 public:
-	Slider(QWidget *parent = 0);
+	ComboBoxEx(QWidget *parent = 0);
 
 private:
-	QSlider *slider;
+	QComboBox *combo;
 	QLabel *label;
 };
