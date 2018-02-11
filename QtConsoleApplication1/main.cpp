@@ -1,4 +1,3 @@
-#include <QDesktopWidget>
 #include <QApplication>
 #include "lines.h"
 
@@ -6,10 +5,10 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	Shapes window;
+	LinearGradients window;
 
-	window.resize(350, 280);
-	window.setWindowTitle("Shapes");
+	window.resize(350, 260);
+	window.setWindowTitle("Linear gradients");
 	window.show();
 
 	return app.exec();
