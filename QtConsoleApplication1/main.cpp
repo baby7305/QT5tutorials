@@ -8,7 +8,9 @@ int main(int argc, char *argv[]) {
 	QWidget window;
 
 	window.resize(250, 150);
-	window.setWindowTitle("Simple example");
+	window.move(300, 300);
+	window.setWindowTitle("ToolTip");
+	window.setToolTip("QWidget");
 	window.show();
 
 	return app.exec();
