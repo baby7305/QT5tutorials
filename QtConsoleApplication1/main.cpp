@@ -5,21 +5,22 @@ int main(void) {
 
 	QTextStream out(stdout);
 
-	QFile file("test.txt");
+	QString filename = "F:/test.txt";
+	QFile file(filename);
 
-	if (!file.open(QIODevice::ReadOnly)) {
+	if (file.open(QIODevice::WriteOnly)) {
 
-		qWarning("Cannot open file for reading");
-		getchar();
-		return 1;
+		QTextStream out(&file);
+		out << "Xubuntu" << endl;
+		out << "Arch" << endl;
+		out << "Debian" << endl;
+		out << "Redhat" << endl;
+		out << "Slackware" << endl;
+
 	}
+	else {
 
-	QTextStream in(&file);
-
-	while (!in.atEnd()) {
-
-		QString line = in.readLine();
-		out << line << endl;
+		qWarning("Could not open file");
 	}
 
 	file.close();
