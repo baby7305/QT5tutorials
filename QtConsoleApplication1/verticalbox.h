@@ -1,9 +1,14 @@
 #pragma once
 
 #include <QWidget>
+#include <QPushButton>
 
-class VerticalBox : public QWidget {
+class Buttons : public QWidget {
 
 public:
-	VerticalBox(QWidget *parent = 0);
+	Buttons(QWidget *parent = 0);
+
+private:
+	QPushButton *okBtn;
+	QPushButton *applyBtn;
 };

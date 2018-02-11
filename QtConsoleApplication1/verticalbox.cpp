@@ -1,29 +1,19 @@
-#include "verticalbox.h"
 #include <QVBoxLayout>
-#include <QPushButton>
+#include <QHBoxLayout>
+#include "verticalbox.h"
 
-VerticalBox::VerticalBox(QWidget *parent)
+Buttons::Buttons(QWidget *parent)
 	: QWidget(parent) {
 
 	QVBoxLayout *vbox = new QVBoxLayout(this);
-	vbox->setSpacing(1);
+	QHBoxLayout *hbox = new QHBoxLayout();
 
-	QPushButton *settings = new QPushButton("Settings", this);
-	settings->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	QPushButton *accounts = new QPushButton("Accounts", this);
-	accounts->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	QPushButton *loans = new QPushButton("Loans", this);
-	loans->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	QPushButton *cash = new QPushButton("Cash", this);
-	cash->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	QPushButton *debts = new QPushButton("Debts", this);
-	debts->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	okBtn = new QPushButton("OK", this);
+	applyBtn = new QPushButton("Apply", this);
 
-	vbox->addWidget(settings);
-	vbox->addWidget(accounts);
-	vbox->addWidget(loans);
-	vbox->addWidget(cash);
-	vbox->addWidget(debts);
+	hbox->addWidget(okBtn, 1, Qt::AlignRight);
+	hbox->addWidget(applyBtn, 0);
 
-	setLayout(vbox);
+	vbox->addStretch(1);
+	vbox->addLayout(hbox);
 }
