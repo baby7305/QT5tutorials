@@ -1,14 +1,14 @@
 #include <QApplication>
-#include "click.h"
+#include <click.h>
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	Move window;
+	Disconnect window;
 
 	window.resize(250, 150);
-	window.setWindowTitle("Move");
+	window.setWindowTitle("Disconnect");
 	window.show();
 
 	return app.exec();

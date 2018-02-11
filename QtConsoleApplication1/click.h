@@ -1,14 +1,19 @@
 #pragma once
 
-#include <QMainWindow>
+#include <QWidget>
+#include <QPushButton>
 
-class Move : public QWidget {
+class Disconnect : public QWidget {
 
 	Q_OBJECT
 
 public:
-	Move(QWidget *parent = 0);
+	Disconnect(QWidget *parent = 0);
 
-protected:
-	void moveEvent(QMoveEvent *e);
+	private slots:
+	void onClick();
+	void onCheck(int);
+
+private:
+	QPushButton *clickBtn;
 };
