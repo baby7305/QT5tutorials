@@ -1,11 +1,11 @@
-#pragma once 
+#pragma once
 
 #include <QWidget>
 
-class Colours : public QWidget {
+class Patterns : public QWidget {
 
 public:
-	Colours(QWidget *parent = 0);
+	Patterns(QWidget *parent = 0);
 
 protected:
 	void paintEvent(QPaintEvent *e);

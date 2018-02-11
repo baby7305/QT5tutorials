@@ -1,3 +1,4 @@
+#include <QDesktopWidget>
 #include <QApplication>
 #include "lines.h"
 
@@ -5,10 +6,10 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	Colours window;
+	Patterns window;
 
-	window.resize(360, 280);
-	window.setWindowTitle("Colours");
+	window.resize(350, 280);
+	window.setWindowTitle("Patterns");
 	window.show();
 
 	return app.exec();

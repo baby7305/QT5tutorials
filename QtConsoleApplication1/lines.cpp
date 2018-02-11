@@ -1,46 +1,47 @@
+#include <QApplication>
 #include <QPainter>
 #include "lines.h"
 
-Colours::Colours(QWidget *parent)
+Patterns::Patterns(QWidget *parent)
 	: QWidget(parent)
 { }
 
-void Colours::paintEvent(QPaintEvent *e) {
+void Patterns::paintEvent(QPaintEvent *e) {
 
 	Q_UNUSED(e);
 
 	doPainting();
 }
 
-void Colours::doPainting() {
+void Patterns::doPainting() {
 
 	QPainter painter(this);
-	painter.setPen(QColor("#d4d4d4"));
+	painter.setPen(Qt::NoPen);
 
-	painter.setBrush(QBrush("#c56c00"));
+	painter.setBrush(Qt::HorPattern);
 	painter.drawRect(10, 15, 90, 60);
 
-	painter.setBrush(QBrush("#1ac500"));
+	painter.setBrush(Qt::VerPattern);
 	painter.drawRect(130, 15, 90, 60);
 
-	painter.setBrush(QBrush("#539e47"));
+	painter.setBrush(Qt::CrossPattern);
 	painter.drawRect(250, 15, 90, 60);
 
-	painter.setBrush(QBrush("#004fc5"));
+	painter.setBrush(Qt::Dense7Pattern);
 	painter.drawRect(10, 105, 90, 60);
 
-	painter.setBrush(QBrush("#c50024"));
+	painter.setBrush(Qt::Dense6Pattern);
 	painter.drawRect(130, 105, 90, 60);
 
-	painter.setBrush(QBrush("#9e4757"));
+	painter.setBrush(Qt::Dense5Pattern);
 	painter.drawRect(250, 105, 90, 60);
 
-	painter.setBrush(QBrush("#5f3b00"));
+	painter.setBrush(Qt::BDiagPattern);
 	painter.drawRect(10, 195, 90, 60);
 
-	painter.setBrush(QBrush("#4c4c4c"));
+	painter.setBrush(Qt::FDiagPattern);
 	painter.drawRect(130, 195, 90, 60);
 
-	painter.setBrush(QBrush("#785f36"));
+	painter.setBrush(Qt::DiagCrossPattern);
 	painter.drawRect(250, 195, 90, 60);
 }
