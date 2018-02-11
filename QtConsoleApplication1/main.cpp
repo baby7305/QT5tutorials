@@ -5,9 +5,10 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	FormEx window;
+	Calculator window;
 
-	window.setWindowTitle("Form example");
+	window.move(300, 300);
+	window.setWindowTitle("Calculator");
 	window.show();
 
 	return app.exec();

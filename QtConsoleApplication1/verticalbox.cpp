@@ -1,20 +1,30 @@
-#include <QFormLayout>
-#include <QLabel>
-#include <QLineEdit>
+#include <QGridLayout>
+#include <QPushButton>
 #include "verticalbox.h"
 
-FormEx::FormEx(QWidget *parent)
+Calculator::Calculator(QWidget *parent)
 	: QWidget(parent) {
 
-	QLineEdit *nameEdit = new QLineEdit(this);
-	QLineEdit *addrEdit = new QLineEdit(this);
-	QLineEdit *occpEdit = new QLineEdit(this);
+	QGridLayout *grid = new QGridLayout(this);
+	grid->setSpacing(2);
 
-	QFormLayout *formLayout = new QFormLayout;
-	formLayout->setLabelAlignment(Qt::AlignRight | Qt::AlignVCenter);
-	formLayout->addRow("Name:", nameEdit);
-	formLayout->addRow("Email:", addrEdit);
-	formLayout->addRow("Age:", occpEdit);
+	QList<QString> values({ "7", "8", "9", "/",
+		"4", "5", "6", "*",
+		"1", "2", "3", "-",
+		"0", ".", "=", "+"
+	});
 
-	setLayout(formLayout);
+	int pos = 0;
+
+	for (int i = 0; i<4; i++) {
+		for (int j = 0; j<4; j++) {
+
+			QPushButton *btn = new QPushButton(values[pos], this);
+			btn->setFixedSize(40, 40);
+			grid->addWidget(btn, i, j);
+			pos++;
+		}
+	}
+
+	setLayout(grid);
 }

@@ -2,8 +2,9 @@
 
 #include <QWidget>
 
-class FormEx : public QWidget {
+class Calculator : public QWidget {
 
 public:
-	FormEx(QWidget *parent = 0);
+	Calculator(QWidget *parent = 0);
+
 };
