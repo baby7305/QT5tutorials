@@ -1,14 +1,14 @@
 #include <QApplication>
-#include <QWidget>
+#include "click.h"
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	QWidget window;
+	Click window;
 
 	window.resize(250, 150);
-	window.setWindowTitle("Simple example");
+	window.setWindowTitle("Click");
 	window.show();
 
 	return app.exec();
