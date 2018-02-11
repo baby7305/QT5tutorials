@@ -5,10 +5,9 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	Buttons window;
+	Layouts window;
 
-	window.resize(290, 170);
-	window.setWindowTitle("Buttons");
+	window.setWindowTitle("Layouts");
 	window.show();
 
 	return app.exec();
