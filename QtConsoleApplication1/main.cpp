@@ -1,14 +1,13 @@
 #include <QApplication>
-#include "label.h"
+#include "burning.h"
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
+	Burning window;
 
-	Table window;
-
-	window.resize(400, 250);
-	window.setWindowTitle("QTableWidget");
+	window.resize(370, 200);
+	window.setWindowTitle("The Burning widget");
 	window.show();
 
 	return app.exec();
