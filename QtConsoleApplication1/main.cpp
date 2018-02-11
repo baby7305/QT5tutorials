@@ -5,10 +5,10 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	LinearGradients window;
+	RadialGradient window;
 
-	window.resize(350, 260);
-	window.setWindowTitle("Linear gradients");
+	window.resize(300, 250);
+	window.setWindowTitle("Radial gradient");
 	window.show();
 
 	return app.exec();

@@ -2,34 +2,29 @@
 #include <QPainter>
 #include "lines.h"
 
-LinearGradients::LinearGradients(QWidget *parent)
+RadialGradient::RadialGradient(QWidget *parent)
 	: QWidget(parent)
 { }
 
-void LinearGradients::paintEvent(QPaintEvent *e) {
+void RadialGradient::paintEvent(QPaintEvent *e) {
 
 	Q_UNUSED(e);
 
 	doPainting();
 }
 
-void LinearGradients::doPainting() {
+void RadialGradient::doPainting() {
 
 	QPainter painter(this);
 
-	QLinearGradient grad1(0, 20, 0, 110);
+	int h = height();
+	int w = width();
 
-	grad1.setColorAt(0.1, Qt::black);
-	grad1.setColorAt(0.5, Qt::yellow);
-	grad1.setColorAt(0.9, Qt::black);
+	QRadialGradient grad1(w / 2, h / 2, 80);
 
-	painter.fillRect(20, 20, 300, 90, grad1);
+	grad1.setColorAt(0, QColor("#032E91"));
+	grad1.setColorAt(0.3, Qt::white);
+	grad1.setColorAt(1, QColor("#032E91"));
 
-	QLinearGradient grad2(0, 55, 250, 0);
-
-	grad2.setColorAt(0.2, Qt::black);
-	grad2.setColorAt(0.5, Qt::red);
-	grad2.setColorAt(0.8, Qt::black);
-
-	painter.fillRect(20, 140, 300, 100, grad2);
+	painter.fillRect(0, 0, w, h, grad1);
 }

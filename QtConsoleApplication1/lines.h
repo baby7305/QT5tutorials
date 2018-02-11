@@ -2,10 +2,10 @@
 
 #include <QWidget>
 
-class LinearGradients : public QWidget {
+class RadialGradient : public QWidget {
 
 public:
-	LinearGradients(QWidget *parent = 0);
+	RadialGradient(QWidget *parent = 0);
 
 protected:
 	void paintEvent(QPaintEvent *e);
