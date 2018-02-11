@@ -1,26 +1,24 @@
 #include <QTextStream>
-#include <QFileInfo>
-#include <QDateTime>
+#include <QDir>
 
-int main(int argc, char *argv[]) {
+int main(void) {
 
 	QTextStream out(stdout);
+	QDir dir;
 
-//	if (argc != 2) {
-//
-//		qWarning("Usage: file_times file");
-//		return 1;
-//	}
+	if (dir.mkdir("mydir")) {
+		out << "mydir successfully created" << endl;
+		getchar();
+	}
 
-//	QString filename = argv[1];
-	QString filename = "F:/test.txt";
+	dir.mkdir("mydir2");
+	getchar();
 
-	QFileInfo fileinfo(filename);
+	if (dir.exists("mydir2")) {
+		dir.rename("mydir2", "newdir");
+		getchar();
+	}
 
-	QDateTime last_rea = fileinfo.lastRead();
-	QDateTime last_mod = fileinfo.lastModified();
-
-	out << "Last read: " << last_rea.toString() << endl;
-	out << "Last modified: " << last_mod.toString() << endl;
+	dir.mkpath("temp/newdir");
 	getchar();
 }
