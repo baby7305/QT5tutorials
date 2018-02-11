@@ -1,13 +1,13 @@
-#include <simplemenu.h>
+#include "simplemenu.h"
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	Toolbar window;
+	Skeleton window;
 
-	window.resize(300, 200);
-	window.setWindowTitle("QToolBar");
+	window.resize(350, 250);
+	window.setWindowTitle("Application skeleton");
 	window.show();
 
 	return app.exec();

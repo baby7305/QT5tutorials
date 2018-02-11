@@ -3,10 +3,10 @@
 #include <QMainWindow>
 #include <QApplication>
 
-class Toolbar : public QMainWindow {
+class Skeleton : public QMainWindow {
 
 	Q_OBJECT
 
 public:
-	Toolbar(QWidget *parent = 0);
+	Skeleton(QWidget *parent = 0);
 };
