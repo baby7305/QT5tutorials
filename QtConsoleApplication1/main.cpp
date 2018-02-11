@@ -1,14 +1,14 @@
 #include <QApplication>
-#include <QWidget>
+#include "breakout.h"
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	QWidget window;
+	Breakout window;
 
-	window.resize(250, 150);
-	window.setWindowTitle("Simple example");
+	window.resize(300, 400);
+	window.setWindowTitle("Breakout");
 	window.show();
 
 	return app.exec();
