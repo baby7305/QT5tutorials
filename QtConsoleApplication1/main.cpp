@@ -1,5 +1,6 @@
 #include <QTextStream>
 #include <QFileInfo>
+#include <QDateTime>
 
 int main(int argc, char *argv[]) {
 
@@ -7,7 +8,7 @@ int main(int argc, char *argv[]) {
 
 //	if (argc != 2) {
 //
-//		qWarning("Usage: owner file");
+//		qWarning("Usage: file_times file");
 //		return 1;
 //	}
 
@@ -16,10 +17,10 @@ int main(int argc, char *argv[]) {
 
 	QFileInfo fileinfo(filename);
 
-	QString group = fileinfo.group();
-	QString owner = fileinfo.owner();
+	QDateTime last_rea = fileinfo.lastRead();
+	QDateTime last_mod = fileinfo.lastModified();
 
-	out << "Group: " << group << endl;
-	out << "Owner: " << owner << endl;
+	out << "Last read: " << last_rea.toString() << endl;
+	out << "Last modified: " << last_mod.toString() << endl;
 	getchar();
 }
