@@ -5,10 +5,10 @@ int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	Statusbar window;
+	CheckBox window;
 
-	window.resize(300, 200);
-	window.setWindowTitle("QStatusBar");
+	window.resize(250, 150);
+	window.setWindowTitle("QCheckBox");
 	window.show();
 
 	return app.exec();

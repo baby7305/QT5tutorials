@@ -1,35 +1,25 @@
-#include <QLabel>
-#include <QFrame>
-#include <QStatusBar>
+#include <QCheckBox>
 #include <QHBoxLayout>
 #include "label.h"
 
-Statusbar::Statusbar(QWidget *parent)
-	: QMainWindow(parent) {
+CheckBox::CheckBox(QWidget *parent)
+	: QWidget(parent) {
 
-	QFrame *frame = new QFrame(this);
-	setCentralWidget(frame);
+	QHBoxLayout *hbox = new QHBoxLayout(this);
 
-	QHBoxLayout *hbox = new QHBoxLayout(frame);
+	QCheckBox *cb = new QCheckBox("Show Title", this);
+	cb->setCheckState(Qt::Checked);
+	hbox->addWidget(cb, 0, Qt::AlignLeft | Qt::AlignTop);
 
-	okBtn = new QPushButton("OK", frame);
-	hbox->addWidget(okBtn, 0, Qt::AlignLeft | Qt::AlignTop);
-
-	aplBtn = new QPushButton("Apply", frame);
-	hbox->addWidget(aplBtn, 1, Qt::AlignLeft | Qt::AlignTop);
-
-	statusBar();
-
-	connect(okBtn, &QPushButton::clicked, this, &Statusbar::OnOkPressed);
-	connect(aplBtn, &QPushButton::clicked, this, &Statusbar::OnApplyPressed);
+	connect(cb, &QCheckBox::stateChanged, this, &CheckBox::showTitle);
 }
 
-void Statusbar::OnOkPressed() {
+void CheckBox::showTitle(int state) {
 
-	statusBar()->showMessage("OK button pressed", 2000);
-}
-
-void Statusbar::OnApplyPressed() {
-
-	statusBar()->showMessage("Apply button pressed", 2000);
+	if (state == Qt::Checked) {
+		setWindowTitle("QCheckBox");
+	}
+	else {
+		setWindowTitle(" ");
+	}
 }

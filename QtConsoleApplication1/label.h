@@ -1,20 +1,14 @@
 #pragma once
 
-#include <QMainWindow>
-#include <QPushButton>
+#include <QWidget>
 
-class Statusbar : public QMainWindow {
+class CheckBox : public QWidget {
 
 	Q_OBJECT
 
 public:
-	Statusbar(QWidget *parent = 0);
+	CheckBox(QWidget *parent = 0);
 
 	private slots:
-	void OnOkPressed();
-	void OnApplyPressed();
-
-private:
-	QPushButton *okBtn;
-	QPushButton *aplBtn;
+	void showTitle(int);
 };
