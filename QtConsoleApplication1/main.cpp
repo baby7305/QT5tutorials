@@ -1,13 +1,33 @@
 #include <QTextStream>
-#include <QDir>
+#include <QFileInfo>
 
-int main(void) {
+int main(int argc, char *argv[]) {
 
 	QTextStream out(stdout);
 
-	out << "Current path:" << QDir::currentPath() << endl;
-	out << "Home path:" << QDir::homePath() << endl;
-	out << "Temporary path:" << QDir::tempPath() << endl;
-	out << "Rooth path:" << QDir::rootPath() << endl;
+//	if (argc != 2) {
+//
+//		out << "Usage: file_times file" << endl;
+//		return 1;
+//	}
+
+//	QString filename = argv[1];
+	QString filename = "F:\\World Machine Documents\\World Machine Documents\\startup.tmd";
+
+	QFileInfo fileinfo(filename);
+
+	QString absPath = fileinfo.absoluteFilePath();
+	QString baseName = fileinfo.baseName();
+	QString compBaseName = fileinfo.completeBaseName();
+	QString fileName = fileinfo.fileName();
+	QString suffix = fileinfo.suffix();
+	QString compSuffix = fileinfo.completeSuffix();
+
+	out << "Absolute file path: " << absPath << endl;
+	out << "Base name: " << baseName << endl;
+	out << "Complete base name: " << compBaseName << endl;
+	out << "File name: " << fileName << endl;
+	out << "Suffix: " << suffix << endl;
+	out << "Whole suffix: " << compSuffix << endl;
 	getchar();
 }
