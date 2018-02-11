@@ -2,10 +2,10 @@
 
 #include <QWidget>
 
-class Donut : public QWidget {
+class Shapes : public QWidget {
 
 public:
-	Donut(QWidget *parent = 0);
+	Shapes(QWidget *parent = 0);
 
 protected:
 	void paintEvent(QPaintEvent *e);
