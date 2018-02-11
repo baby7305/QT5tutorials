@@ -1,27 +1,14 @@
+#include "verticalbox.h"
 #include <QApplication>
-#include <QDesktopWidget>
-#include <QTextEdit>
-
-class Absolute : public QWidget {
-
-public:
-	Absolute(QWidget *parent = 0);
-};
-
-Absolute::Absolute(QWidget *parent)
-	: QWidget(parent) {
-
-	QTextEdit *ledit = new QTextEdit(this);
-	ledit->setGeometry(5, 5, 200, 150);
-}
 
 int main(int argc, char *argv[]) {
 
 	QApplication app(argc, argv);
 
-	Absolute window;
+	VerticalBox window;
 
-	window.setWindowTitle("Absolute");
+	window.resize(240, 230);
+	window.setWindowTitle("VerticalBox");
 	window.show();
 
 	return app.exec();
