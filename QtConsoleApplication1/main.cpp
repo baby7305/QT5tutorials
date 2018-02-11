@@ -1,5 +1,6 @@
 #include <QApplication>
 #include <QWidget>
+#include <QIcon>
 
 int main(int argc, char *argv[]) {
 
@@ -8,9 +9,8 @@ int main(int argc, char *argv[]) {
 	QWidget window;
 
 	window.resize(250, 150);
-	window.move(300, 300);
-	window.setWindowTitle("ToolTip");
-	window.setToolTip("QWidget");
+	window.setWindowTitle("Icon");
+	window.setWindowIcon(QIcon("web.png"));
 	window.show();
 
 	return app.exec();

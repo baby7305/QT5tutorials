@@ -24,10 +24,18 @@
       <Extensions>moc;h;cpp</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{e2adbb34-6431-48ce-9010-8f337475fa33}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="web.png">
+      <Filter>res</Filter>
+    </Image>
   </ItemGroup>
 </Project>
